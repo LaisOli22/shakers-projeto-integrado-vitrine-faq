@@ -2,7 +2,9 @@
 
 <section class="collection">
 
-  <h2 class="collection__title">{{ section.settings.title }}</h2>
+  {% if section.settings.title != blank %}
+    <h2 class="collection__title">{{ section.settings.title }}</h2>
+  {% endif %}
   <section class="collection__grid">
     {% for product in section.settings.collection.products %}
 
@@ -30,7 +32,8 @@
       {
         "type": "text",
         "id": "title",
-        "label": "Produtos relacionados"
+        "label":"Título",
+        "default": "Produtos Mais Vendidos"
       }, {
         "type": "collection",
         "id": "collection",
