@@ -1,0 +1,20 @@
+.faq{
+    display:flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 20px 40px 20px;
+}
+
+.faq__title{
+    margin-bottom: 10px;
+    color: #4e3210;
+}
+
+.faq__division{
+    border-top: 2px solid #4e3210;
+    width: 300px;
+}
+
+.faq__item{
+    color:#4e3210;
+}
