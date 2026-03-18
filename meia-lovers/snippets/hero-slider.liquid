@@ -1,0 +1,32 @@
+
+{{ 'metaobject-slider.css' |   asset_url |  stylesheet_tag }}
+<script src="{{ 'metaobject-slider.js' | asset_url }}" defer></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<div class="product-card" data-product-id="{{product.id}}">
+    <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+
+            {% for image in product.images %}
+            <div class="swiper-slide">
+                <img 
+                src="{{ image | image_url: width: 500 }}"
+                alt="{{ product.title }}" width="auto" height="auto"
+                >
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+</div>
+

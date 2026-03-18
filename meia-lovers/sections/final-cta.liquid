@@ -1,0 +1,38 @@
+{{ 'cta.css' |   asset_url |  stylesheet_tag }}
+
+<section class="final-cta">
+
+  <h2>{{ section.settings.title }}</h2>
+
+  <p>{{ section.settings.text }}</p>
+
+  <a href="{{ section.settings.button_link }}" class="cta-button">
+    {{ section.settings.button_text }}
+  </a>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Final CTA",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Título"
+      }, {
+        "type": "textarea",
+        "id": "text",
+        "label": "Texto"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Texto do botão"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Link do botão"
+      }
+    ]
+  }
+{% endschema %}
