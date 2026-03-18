@@ -1,0 +1,47 @@
+
+.final-cta {
+  background: linear-gradient(135deg, #d14c8ce7,#ff7818c2, #ffb347);
+  padding: 60px 40px;
+  text-align: center;
+  border-radius: 16px;
+  margin: 60px auto;
+  max-width: 1000px;
+  color: #fff;
+}
+
+
+.final-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.final-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #753d09;
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.cta-button:hover {
+  background: #fff;
+  color: #753d09;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Click */
+.cta-button:active {
+  transform: scale(0.97);
+}
