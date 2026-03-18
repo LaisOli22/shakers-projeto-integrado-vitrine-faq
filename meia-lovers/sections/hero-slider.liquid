@@ -1,0 +1,98 @@
+{{ 'hero-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'hero-slider.js' | asset_url }}" defer></script>
+
+<section class="hero">
+  <div class="hero__container">
+
+    <div class="hero__slider">
+      {% for block in section.blocks %}
+        <div class="hero__slide">
+
+          <div class="hero__content">
+            {% if block.settings.title != blank %}
+              <h1 class="hero__title">{{ block.settings.title }}</h1>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <p class="hero__text">{{ block.settings.text }}</p>
+            {% endif %}
+
+            {% if block.settings.button_label != blank %}
+              <a href="{{ block.settings.button_link }}" class="hero__button">
+                {{ block.settings.button_label }}
+              </a>
+            {% endif %}
+          </div>
+
+          {% if block.settings.image != blank %}
+            <div class="hero__image">
+              <img
+                src="{{ block.settings.image | image_url: width: 1200 }}"
+                alt="{{ block.settings.title }}"
+                width="600"
+                height="400"
+              >
+            </div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Slider",
+  "tag": "section",
+  "class": "section-hero",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Meias divertidas para todos os estilos"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto",
+          "default": "Conforto, estilo e personalidade em cada passo."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto do botão",
+          "default": "Compre agora"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link do botão"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slider",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
