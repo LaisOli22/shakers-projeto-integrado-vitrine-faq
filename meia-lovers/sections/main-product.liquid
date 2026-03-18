@@ -1,0 +1,88 @@
+{{ "main-product.css" | asset_url | stylesheet_tag }}
+{{ 'metaobject-slider.css' | asset_url | stylesheet_tag }}
+
+<section class="main-product">
+  <div class="main-product__header">
+    <h1>{{ page.title }}</h1>
+    <div class="main-product__content">{{ page.content }}</div>
+  </div>
+
+  {% assign product = all_products[section.settings.featured_product] %}
+
+  {% if product %}
+    <div class="main-product__body">
+      <div class="main-product__container">
+
+        <article class="featured-product">
+          <div class="featured-product__container">
+            <div class="featured-product__slider">
+              {% render "hero-slider" product: product %}
+            </div>
+            <figure class="featured-product__image">
+              <img
+                src="{{product.featured_image |  image_url }}"
+                alt="{{product.title}}"
+                width="500"
+                height="500">
+            </figure>
+          </div>
+
+          <div class="featured-product__info">
+            <h2>{{ product.title }}</h2>
+
+            {% if product.compare_at_price > product.price %}
+              <p class="product-price">
+                <span style="text-decoration: line-through;">
+                  {{ product.compare_at_price | money }}
+                </span>
+                <span>
+                  {{ product.price | money }}
+                </span>
+              </p>
+            {% endif %}
+
+            <!-- Seleção de Tamanho -->
+            <div class="variant-group">
+              <p>Tamanho</p>
+              {% for value in product.options_by_name['Tamanho'].values %}
+                <button
+                  class="variant-option"
+                  data-option="Tamanho"
+                  data-value="{{value}}">{{ value }}</button>
+              {% endfor %}
+            </div>
+
+            <button class="add-to-cart">Adicionar ao carrinho</button>
+          </div>
+
+          <script type="application/json" class="product-variants">
+                {{ product.variants | json }}
+          </script>
+        </article>
+
+      </div>
+
+      <div class="featured-product__description">
+        <p>{{ product.description }}</p>
+      </div>
+
+    </div>
+
+
+  {% endif %}
+
+</section>
+
+
+{% schema %}
+  {
+    "name": "Main Product",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Produto principal"
+      }
+    ]
+  }
+{% endschema %}
