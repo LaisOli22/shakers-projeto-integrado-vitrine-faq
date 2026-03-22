@@ -12,9 +12,13 @@
     "main": {
       "type": "main-product",
       "settings": {}
-    }
+    },
+    "faq": {
+      "type": "product-faq",
+      "settings": {}
+    },
   },
   "order": [
-    "main"
+    "main","faq"
   ]
 }

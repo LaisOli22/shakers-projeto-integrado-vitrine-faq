@@ -17,15 +17,11 @@
       "type": "collection-product-list",
       "settings": {}
     },
-    "faq": {
-      "type": "product-faq",
-      "settings": {}
-    },
     "cta":{
       "type":"final-cta",
     }
   },
   "order": [
-    "main", "collection", "faq", "cta"
+    "main", "collection", "cta"
   ]
 }
